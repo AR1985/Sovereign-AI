@@ -7,16 +7,8 @@ terraform {
   }
 }
 
-variable "region" {
-  default = "us-east-1"
-}
-
 variable "instance_type" {
   default = "g6.xlarge" # 1x L4, 24 GB GPU memory
-}
-
-variable "model" {
-  default = "Qwen/Qwen3-8B" # ungated, so no Hugging Face token needed
 }
 
 provider "aws" {

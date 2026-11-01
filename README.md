@@ -50,7 +50,7 @@ GPU instances can incur substantial charges while running. Check AWS pricing and
 
 ## Configuration
 
-The current Terraform inputs are declared in [`main.tf`](main.tf):
+The current Terraform inputs are declared in [`variables.tf`](variables.tf) and [`main.tf`](main.tf):
 
 | Input | Default | Purpose |
 | --- | --- | --- |
@@ -58,7 +58,9 @@ The current Terraform inputs are declared in [`main.tf`](main.tf):
 | `instance_type` | `g6.xlarge` | GPU EC2 instance type |
 | `model` | `Qwen/Qwen3-8B` | Hugging Face model ID passed to vLLM |
 
-Override a value with Terraform's `-var` option, for example `terraform apply -var="model=org/model-name"`. Gated Hugging Face models need an authorized download method; the current configuration does not set a Hugging Face token.
+To customize the region or model, copy [`terraform.tfvars.example`](terraform.tfvars.example) to `terraform.tfvars` and edit the values. The local `terraform.tfvars` file is ignored by Git. You can also override a value with Terraform's `-var` option, for example `terraform apply -var="model=org/model-name"`. `instance_type` remains at its default unless overridden with `-var`.
+
+Gated Hugging Face models need an authorized download method; the current configuration does not set a Hugging Face token.
 
 ## Direction
 
